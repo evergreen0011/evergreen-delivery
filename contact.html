@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us - Evergreen Delivery</title>
+  <title>Contact Us - Evergreen Delivery</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -15,23 +15,26 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
         <li><a href="tracking.html">Track Package</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="content">
-    <h1>About Evergreen Delivery</h1>
-    <p>We are a modern logistics and delivery company committed to fast, reliable, and secure transportation of packages both locally and internationally.</p>
+    <h1>Contact Us</h1>
+    <p>If you have any questions or need help with a delivery, feel free to reach out to us below.</p>
 
-    <p>With a dedicated team and state-of-the-art tracking system, Evergreen Delivery ensures your packages arrive on time, every time. We pride ourselves on professionalism, transparency, and customer satisfaction.</p>
-
-    <p>Whether you’re a business or an individual, we are here to help simplify your delivery needs.</p>
+    <form action="mailto:evergreendelivery134@gmail.com" method="POST" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required><br><br>
+      <input type="email" name="email" placeholder="Your Email" required><br><br>
+      <textarea name="message" rows="6" placeholder="Your Message" required></textarea><br><br>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
   </section>
 
   <footer>
-    <p>&copy; 2025 Evergreen Delivery. All rights reserved.</p>
+    <p>&copy; 2005 Evergreen Delivery. All rights reserved.</p>
   </footer>
 
 </body>
