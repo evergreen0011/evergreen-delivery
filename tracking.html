@@ -8,6 +8,7 @@
       return;
     }
 
+    // One tracking number, full journey log
     const trackingData = {
       "EVG001": [
         { location: "Ibadan", status: "Package Received", time: "July 10, 9:00 AM" },
@@ -33,16 +34,11 @@
         `;
       });
 
-      const destination = journey[journey.length - 1].location;
-      const latestStatus = journey[journey.length - 1].status;
-
       journeyHTML += `</ul>`;
 
       resultBox.innerHTML = `
         <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #fff;">
           ${journeyHTML}
-          <p><strong>🧭 Destination:</strong> ${destination}</p>
-          <p><strong>📌 Current Status:</strong> ${latestStatus}</p>
         </div>
       `;
     } else {
