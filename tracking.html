@@ -1,52 +1,89 @@
-<script>
-  function trackPackage() {
-    const trackingNum = document.getElementById("EVG001122556").value.trim().toUpperCase();
-    const resultBox = document.getElementById("trackingResult");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Track Your Package</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Evergreen Logo" height="50">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="tracking.html">Track</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    if (trackingNum === "") {
-      resultBox.innerHTML = "❗ Please enter a tracking number."; 
-      return;
+  <main style="padding: 20px;">
+    <h1>Track Your Package</h1>
+    <p>Enter your tracking number below:</p>
+
+    <input type="text" id="trackingNumber" placeholder="e.g. EVG001">
+    <button onclick="trackPackage()">Track</button>
+
+    <div id="trackingResult" style="margin-top: 20px;"></div>
+  </main>
+
+  <script>
+    function trackPackage() {
+      const trackingNum = document.getElementById("trackingNumber").value.trim().toUpperCase();
+      const resultBox = document.getElementById("trackingResult");
+
+      if (trackingNum === "") {
+        resultBox.innerHTML = "❗ Please enter a tracking number.";
+        return;
+      }
+
+      // Simulated tracking data
+      const trackingData = {
+        "EVG001": {
+          status: "In Transit",
+          location: "Lagos Hub, Nigeria",
+          eta: "2 days"
+        },
+        "EVG002": {
+          status: "Out for Delivery",
+          location: "Port Harcourt",
+          eta: "Today"
+        },
+        "EVG003": {
+          status: "Delivered",
+          location: "Abuja",
+          eta: "Delivered on July 12"
+        },
+        "EVG004": {
+          status: "Delayed",
+          location: "Customs Inspection, Benin",
+          eta: "New date pending"
+        }
+      };
+
+      const data = trackingData[trackingNum];
+
+      if (data) {
+        resultBox.innerHTML = `
+          <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #f0f9f5;">
+            <h3>📦 Tracking Number: ${trackingNum}</h3>
+            <p>Status: <strong>${data.status}</strong></p>
+            <p>Current Location: <strong>${data.location}</strong></p>
+            <p>Estimated Delivery: <strong>${data.eta}</strong></p>
+          </div>
+        `;
+      } else {
+        resultBox.innerHTML = `
+          <div style="padding: 15px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;">
+            ❌ Tracking number not found. Please check and try again.
+          </div>
+        `;
+      }
     }
-
-    // Simulated tracking data (you can add more)
-    const trackingData = {
-      "EVG001": {
-        status: "cleared for Delivery",
-        location: "Los Angeles, US",
-        eta: "july 07"
-      },
-      "EVG002": {
-        status: "Out for Delivery",
-        location: "north carolina",
-        eta: "july 08"
-      },
-      "EVG003": {
-        status: "in transit",
-        location: "California",
-        eta: 
-      },
-       "EVG004": {
-        status: "awaiting custom clearance" 
-        location: "michigan",
-        eta: "july 10"
-
-    const data = trackingData[trackingNum];
-
-    if (data) {
-      resultBox.innerHTML = `
-        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #f0f9f5;">
-          <h3>📦 Tracking Number: ${trackingNum}</h3>
-          <p>Status: <strong>${data.status}</strong></p>
-          <p>Current Location: <strong>${data.location}</strong></p>
-          <p>Estimated Delivery: <strong>${data.eta}</strong></p>
-        </div>
-      `;
-    } else {
-      resultBox.innerHTML = `
-        <div style="padding: 15px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;">
-          ❌ Tracking number not found. Please check and try again.
-        </div>
-      `;
-    }
-  }
-</script>
+  </script>
+</body>
+</html>
