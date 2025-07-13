@@ -1,49 +1,28 @@
+<h1>Track Your Package</h1>
+<p>Enter your tracking number below:</p>
+
+<input type="text" id="trackingNumber" placeholder="e.g. EVG123456789">
+<button onclick="trackPackage()">Track</button>
+
+<div id="trackingResult" style="margin-top: 20px;"></div>
+
 <script>
   function trackPackage() {
-    const trackingNum = document.getElementById("trackingNumber").value.trim().toUpperCase();
+    const trackingNum = document.getElementById("trackingNumber").value;
     const resultBox = document.getElementById("trackingResult");
 
-    if (trackingNum === "") {
+    if (trackingNum.trim() === "") {
       resultBox.innerHTML = "❗ Please enter a tracking number.";
       return;
     }
 
-    // Simulated tracking data (you can add more)
-    const trackingData = {
-      "EVG001": {
-        status: "In Transit",
-        location: "Lagos Hub, Nigeria",
-        eta: "2 days"
-      },
-      "EVG002": {
-        status: "Out for Delivery",
-        location: "Port Harcourt",
-        eta: "Today"
-      },
-      "EVG003": {
-        status: "Delivered",
-        location: "Abuja",
-        eta: "Delivered on July 12"
-      }
-    };
-
-    const data = trackingData[trackingNum];
-
-    if (data) {
-      resultBox.innerHTML = `
-        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #f0f9f5;">
-          <h3>📦 Tracking Number: ${trackingNum}</h3>
-          <p>Status: <strong>${data.status}</strong></p>
-          <p>Current Location: <strong>${data.location}</strong></p>
-          <p>Estimated Delivery: <strong>${data.eta}</strong></p>
-        </div>
-      `;
-    } else {
-      resultBox.innerHTML = `
-        <div style="padding: 15px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;">
-          ❌ Tracking number not found. Please check and try again.
-        </div>
-      `;
-    }
+    // Fake tracking status (you can update this to be dynamic later)
+    resultBox.innerHTML = `
+      <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #f0f9f5;">
+        <h3>📦 Tracking Number: ${trackingNum}</h3>
+        <p>Status: <strong>In Transit</strong></p>
+        <p>Estimated Delivery: <strong>2 days</strong></p>
+      </div>
+    `;
   }
 </script>
