@@ -8,37 +8,34 @@
       return;
     }
 
-    // One tracking number, full journey log
+    // Simulated tracking data (you can add more)
     const trackingData = {
-      "EVG001": [
-        { location: "Ibadan", status: "Package Received", time: "July 10, 9:00 AM" },
-        { location: "Lagos", status: "Departed Ibadan", time: "July 10, 2:00 PM" },
-        { location: "Lagos", status: "Held at Lagos Hub", time: "July 11, 8:00 AM" },
-        { location: "Port Harcourt", status: "Cleared and In Transit", time: "July 12, 10:00 AM" },
-        { location: "Port Harcourt", status: "Currently in Port Harcourt", time: "July 13, 1:00 PM" }
-      ]
+      "EVG001": {
+        status: "In Transit",
+        location: "Lagos Hub, Nigeria",
+        eta: "2 days"
+      },
+      "EVG002": {
+        status: "Out for Delivery",
+        location: "Port Harcourt",
+        eta: "Today"
+      },
+      "EVG003": {
+        status: "Delivered",
+        location: "Abuja",
+        eta: "Delivered on July 12"
+      }
     };
 
-    const journey = trackingData[trackingNum];
+    const data = trackingData[trackingNum];
 
-    if (journey) {
-      let journeyHTML = `<h3>📦 Tracking Number: ${trackingNum}</h3><ul style="list-style: none; padding: 0;">`;
-
-      journey.forEach(step => {
-        journeyHTML += `
-          <li style="margin-bottom: 10px; padding: 10px; background: #f4fdf7; border-left: 5px solid #28a745;">
-            <strong>${step.status}</strong><br>
-            📍 ${step.location}<br>
-            🕒 ${step.time}
-          </li>
-        `;
-      });
-
-      journeyHTML += `</ul>`;
-
+    if (data) {
       resultBox.innerHTML = `
-        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #fff;">
-          ${journeyHTML}
+        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #f0f9f5;">
+          <h3>📦 Tracking Number: ${trackingNum}</h3>
+          <p>Status: <strong>${data.status}</strong></p>
+          <p>Current Location: <strong>${data.location}</strong></p>
+          <p>Estimated Delivery: <strong>${data.eta}</strong></p>
         </div>
       `;
     } else {
