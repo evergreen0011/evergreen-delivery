@@ -4,7 +4,7 @@
 <input type="text" id="trackingNumber" placeholder="e.g. EVG987654321">
 <button onclick="trackPackage()">Track</button>
 
-<div id="trackingResult" style="margin-top: 20px;"></div>
+<div id="trackingResult" style="margin-top: 40px;"></div>
 
 <script>
   function trackPackage() {
@@ -18,10 +18,10 @@
 
     // Fake tracking status (you can update this to be dynamic later)
     resultBox.innerHTML = `
-      <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #f0f9f5;">
+      <div style="padding: 25px; border: 1px solid #ccc; border-radius: 10px; background: #f0f9f5;">
         <h3>📦 Tracking Number: ${trackingNum}</h3>
-        <p>Status: <strong>awaiting custom clearance</strong></p>
-        <p>Estimated Delivery: <strong>july 20</strong></p>
+        <p>Status:<strong>awaiting custom clearance</strong></p>
+        <p>Estimated Delivery:<strong>july 20</strong></p>
       </div>
     `;
   }
