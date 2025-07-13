@@ -1,56 +1,40 @@
+<h1>Track Your Package</h1>
+<p>Enter your tracking number below:</p>
+
+<input type="text" id="trackingNumber" placeholder="e.g. EVG987654321">
+<button onclick="trackPackage()">Track</button>
+
+<div id="trackingResult" style="margin-top: 40px;"></div>
+
 <script>
   function trackPackage() {
-    const trackingNum = document.getElementById("trackingNumber").value.trim().toUpperCase();
+    const trackingNum = document.getElementById("trackingNumber").value;
     const resultBox = document.getElementById("trackingResult");
 
-    if (trackingNum === "") {
+    if (trackingNum.trim() === "") {
       resultBox.innerHTML = "❗ Please enter a tracking number.";
       return;
     }
 
-    const trackingData = {
-      "EVG001": [
-        { location: "Ibadan", status: "Package Received", time: "July 10, 9:00 AM" },
-        { location: "Lagos", status: "Departed Ibadan", time: "July 10, 2:00 PM" },
-        { location: "Lagos", status: "Held at Lagos Hub", time: "July 11, 8:00 AM" },
-        { location: "Port Harcourt", status: "Cleared and In Transit", time: "July 12, 10:00 AM" },
-        { location: "Port Harcourt", status: "Currently in Port Harcourt", time: "July 13, 1:00 PM" }
-      ]
-    };
-
-    const journey = trackingData[trackingNum];
-
-    if (journey) {
-      let journeyHTML = <h3>📦 Tracking Number: ${trackingNum}</h3><ul style="list-style: none; padding: 0;">;
-
-      journey.forEach(step => {
-        journeyHTML += `
-          <li style="margin-bottom: 10px; padding: 10px; background: #f4fdf7; border-left: 5px solid #28a745;">
-            <strong>${step.status}</strong><br>
-            📍 ${step.location}<br>
-            🕒 ${step.time}
-          </li>
-        `;
-      });
-
-      journeyHTML += </ul>;
-
-      const destination = journey[journey.length - 1].location;
-      const latestStatus = journey[journey.length - 1].status;
-
-      resultBox.innerHTML = `
-        <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px; background: #fff;">
-          ${journeyHTML}
-          <p><strong>🧭 Destination:</strong> ${destination}</p>
-          <p><strong>📌 Current Status:</strong> ${latestStatus}</p>
-        </div>
-      `;
-    } else {
-      resultBox.innerHTML = `
-        <div style="padding: 15px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;">
-          ❌ Tracking number not found. Please check and try again.
-        </div>
-      `;
-    }
+    // Fake tracking status (you can update this to be dynamic later)
+    resultBox.innerHTML = `
+      <div style="padding: 25px; border: 1px solid #ccc; border-radius: 10px; background: #f0f9f5;">
+        <h3>📦 Tracking Number: ${trackingNum}</h3>
+        <p>Status:<strong>departed warehouse</strong></p>
+        <p>location:<strong>california</strong></p>
+        <p>Time:<strong>2:10pm</strong></p>
+        <p>Estimated Delivery:<strong>july 20</strong></p>
+        |
+        <p>Status:<strong>in transit</strong></p>
+        <p>location:<strong>las vegas</strong></p>
+        <p>Time:<strong>2:10pm</strong></p>
+        <p>Estimated Delivery:<strong>july 20</strong></p>
+        |
+        <p>Status:<strong>hold</strong></P>
+        <p>Current location:<strong>Houston</strong></p>
+        <p>Time:<strong>4:12pm</strong></p>
+        <p>Estimated Delivery:<strong>july 20</strong></p>
+      </div>
+    `;
   }
 </script>
